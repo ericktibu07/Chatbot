@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universidad de las Fuerzas Armadas ESPE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Universidad de las Fuerzas Armadas ESPE</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('historia') }}">Historia</a></li>
+                <li><a href="{{ url_for('mision') }}">Misión y Visión</a></li>
+                <li><a href="{{ url_for('cursos') }}">Cursos</a></li>
+                <li><a href="{{ url_for('contacto') }}">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="chatbox">
+        <h2>Chatbot</h2>
+        <input type="text" id="pregunta" placeholder="Ingrese su pregunta..." style="width: 100%; padding: 10px; margin-bottom: 10px;">
+        
+        <!-- Botones en una fila -->
+        <div style="display: flex; gap: 10px;">
+            <button onclick="hacerPregunta()" style="padding: 10px; flex: 1;">Enviar</button>
+            <button id="nuevaPreguntaBtn" style="padding: 10px; flex: 1;">Nueva pregunta</button>
+            <button onclick="preguntaAleatoria()" style="padding: 10px; flex: 1;">Pregunta aleatoria</button>
+        </div>
+        
+        <div id="respuesta" style="margin-top: 10px;"></div>
+        <div id="preguntasGuardadas" style="margin-top: 20px;"></div>
+    </div>
+
+    <script>
+        // Lista de preguntas y respuestas predefinidas
+        const preguntasRespuestas = [
+            { pregunta: "Cómo se gestionan las residencias estudiantiles en la ESPE?", respuesta: "Las residencias son gestionadas por la administración de la universidad, ofreciendo alojamiento y servicios básicos a los estudiantes." },
+            { pregunta: "¿Qué carreras ofrece la Universidad de las Fuerzas Armadas ESPE?", respuesta: "La ESPE ofrece una variedad de carreras en ingeniería, ciencias de la vida, ciencias administrativas, ciencias de la tierra, y más." },
+            { pregunta: "¿Cuál es el proceso de admisión para la ESPE?", respuesta: "El proceso de admisión incluye la inscripción en el sistema nacional de nivelación y admisión, la rendición del examen de ingreso, y la selección basada en el puntaje obtenido." },
+            { pregunta: "¿La ESPE acepta estudiantes internacionales?", respuesta: "Sí, la ESPE acepta estudiantes internacionales bajo ciertas condiciones y requisitos específicos." },
+            { pregunta: "¿La ESPE organiza conferencias y seminarios?", respuesta: "La ESPE regularmente organiza conferencias, seminarios y talleres en diversas áreas del conocimiento." },
+            { pregunta: "¿Cómo se puede acceder al servicio de biblioteca en la ESPE?", respuesta: "Los estudiantes pueden acceder al servicio de biblioteca presentando su carnet estudiantil y utilizando las plataformas en línea para recursos digitales." },
+            { pregunta: "¿Cómo se promueve la publicación de artículos científicos en la ESPE?", respuesta: "La ESPE promueve la publicación de artículos científicos a través de talleres, asesoramiento y apoyo financiero para la participación en conferencias y revistas." },
+            { pregunta: "¿Cuáles son los horarios de atención de las oficinas administrativas en la ESPE? ", respuesta: "Las oficinas administrativas generalmente atienden de lunes a viernes en horario laboral, pero es recomendable consultar el horario específico en la página web de la universidad." }
+        ];
+
+        function hacerPregunta() {
+            const pregunta = document.getElementById('pregunta').value;
+    
+            // Enviar solicitud POST al servidor Flask
+            fetch('/chatbot', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ pregunta: pregunta })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Mostrar la respuesta en la página
+                document.getElementById('respuesta').innerText = "Respuesta: " + data.respuesta;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('respuesta').innerText = "Hubo un error al procesar la solicitud.";
+            });
+        }
+
+        function preguntaAleatoria() {
+            const randomIndex = Math.floor(Math.random() * preguntasRespuestas.length);
+            const preguntaSeleccionada = preguntasRespuestas[randomIndex];
+            
+            // Mostrar la pregunta y la respuesta correspondiente
+            document.getElementById('pregunta').value = preguntaSeleccionada.pregunta;
+            document.getElementById('respuesta').innerText = "Respuesta: " + preguntaSeleccionada.respuesta;
+        }
+
+        document.getElementById('nuevaPreguntaBtn').addEventListener('click', function () {
+            const pregunta = document.getElementById('pregunta').value;
+            const respuesta = document.getElementById('respuesta').innerText;
+
+            if (pregunta.trim() === "" || respuesta.trim() === "") {
+                alert("Por favor, ingresa una pregunta y espera la respuesta antes de continuar.");
+                return;
+            }
+
+            const savedQuestionDiv = document.createElement('div');
+            savedQuestionDiv.classList.add('saved-question');
+            savedQuestionDiv.style.border = "1px solid #ddd";
+            savedQuestionDiv.style.padding = "10px";
+            savedQuestionDiv.style.borderRadius = "8px";
+            savedQuestionDiv.style.marginBottom = "10px";
+
+            const questionElement = document.createElement('h3');
+            questionElement.textContent = "Pregunta: " + pregunta;
+            questionElement.style.margin = "0";
+            questionElement.style.fontFamily = "'Roboto', sans-serif";
+
+            const answerElement = document.createElement('p');
+            answerElement.textContent = respuesta;
+            answerElement.style.margin = "5px 0 0";
+            answerElement.style.color = "#555";
+
+            savedQuestionDiv.appendChild(questionElement);
+            savedQuestionDiv.appendChild(answerElement);
+
+            document.getElementById('preguntasGuardadas').appendChild(savedQuestionDiv);
+
+            document.getElementById('pregunta').value = '';
+            document.getElementById('respuesta').innerText = '';
+        });
+    </script>
+    
+</body>
+</html>
+ 

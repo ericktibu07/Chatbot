@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Universidad de las Fuerzas Armadas ESPE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        table td {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Contacto - Universidad de las Fuerzas Armadas ESPE</h1>
+
+    <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('historia') }}">Historia</a></li>
+        <li><a href="{{ url_for('mision') }}">Misión y Visión</a></li>
+        <li><a href="{{ url_for('cursos') }}">Cursos</a></li>
+    </ul>
+
+    <table align="center">
+        <tr>
+            <td>
+                <h2>Formulario de Contacto</h2>
+                <form action="#" method="post">
+                    <label for="nombre">Nombre:</label><br>
+                    <input type="text" id="nombre" name="nombre" required><br><br>
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email" required><br><br>
+                    <label for="asunto">Asunto:</label><br>
+                    <input type="text" id="asunto" name="asunto" required><br><br>
+                    <label for="mensaje">Mensaje:</label><br>
+                    <textarea id="mensaje" name="mensaje" rows="5" required></textarea><br><br>
+                    <input type="submit" value="Enviar">
+                </form>
+            </td>
+            <td>
+                <h2>Mapa</h2>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.758091550921!2d-78.44509422522367!3d-0.31482099968208227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d5bd12538eb13b%3A0x907c61f1abbe45ab!2sUniversidad%20de%20las%20Fuerzas%20Armadas%20ESPE!5e0!3m2!1ses!2snl!4v1725074223670!5m2!1ses!2snl" 
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </td>
+        </tr>
+    </table>
+
+    <h2 align="center">Información de Contacto</h2>
+    <table align="center">
+        <tr>
+            <th>Campus Sangolquí Matriz</th>
+            <th>Campus Quito</th>
+            <th>Campus Latacunga</th>
+        </tr>
+        <tr>
+            <td>
+                Av. General Rumiñahui s/n y Ambato<br>
+                Sangolquí – Ecuador<br>
+                (593) 23989-400 Ext: 1551<br>
+                0999748423 Asistente Educación Continua<br>
+                uec@espe.edu.ec<br>
+                comunicacion@espe.edu.ec
+            </td>
+            <td>
+                El Inca<br>
+                Av. 6 de Diciembre y Thomás de Berlanga<br>
+                Quito – Ecuador<br>
+                (593) 32810-206 Ext: 4121<br>
+                idiomas@espe.edu.ec<br>
+                <a href="http://idiomas.edu.ec/">http://idiomas.edu.ec/</a>
+            </td>
+            <td>
+                Belisario Quevedo<br>
+                Parroquia Belisario Quevedo, Barrio El Forastero<br>
+                Latacunga – Ecuador<br>
+                (593) 32810-206 Ext: 4132<br>
+                marketing-el@espe.edu.ec<br>
+                <a href="http://espe-el.espe.edu.ec/">http://espe-el.espe.edu.ec/</a>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

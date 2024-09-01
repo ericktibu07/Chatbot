@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos - Universidad de las Fuerzas Armadas ESPE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        .image-cell img {
+            width: 100%; 
+            max-width: 600px; 
+            height: auto; 
+            display: block; 
+            margin: 0 auto; 
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Cursos de la Universidad de las Fuerzas Armadas ESPE</h1>
+
+    <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('historia') }}">Historia</a></li>
+        <li><a href="{{ url_for('mision') }}">Misión y Visión</a></li>
+        <li><a href="{{ url_for('contacto') }}">Contacto</a></li>
+    </ul>
+
+    <table align="center">
+        <tr>
+            <th colspan="2" class="highlight">CURSOS ABIERTOS</th>
+        </tr>
+        <tr>
+            <td class="image-cell"><img src="{{ url_for('static', filename='images/8.jpg') }}" alt="Imagen Curso 1"></td>
+            <td class="image-cell"><img src="../static/images/9.jpg" alt="Imagen Curso 2"></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="image-cell"><img src="../static/images/10.jpg" alt="Imagen Curso 3"></td>
+        </tr>
+        <tr>
+            <th colspan="2" class="highlight">CONVOCATORIA PARA DOCENTES</th>
+        </tr>
+        <tr>
+            <td colspan="2" class="image-cell"><img src="../static/images/11.jpg" alt="Imagen Convocatoria Docentes"></td>
+        </tr>
+    </table>
+
+</body>
+</html>

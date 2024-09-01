@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misión y Visión - Universidad de las Fuerzas Armadas ESPE</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            margin: 20px;
+            background-color: #FAF3E3;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #8B4513;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
+            list-style-type: none;
+            padding: 0;
+            background-color: #D2B48C;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        ul li {
+            margin: 0 10px;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #8B4513;
+            font-weight: bold;
+            font-size: 1.2em;
+            padding: 10px 15px;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        ul li a:hover {
+            color: #4B2E19;
+        }
+
+        table {
+            width: 70%; /* Ancho ajustado */
+            border-collapse: collapse;
+            margin: 20px auto; /* Centrado de la tabla */
+            table-layout: fixed; /* Fija el layout de la tabla para mejor control */
+        }
+
+        th, td {
+            padding: 10px; /* Padding ajustado */
+            text-align: left;
+            border: 1px solid #8B4513;
+            word-wrap: break-word; /* Permite que el texto se ajuste dentro de las celdas */
+        }
+
+        th {
+            background-color: #D2B48C;
+            color: #8B4513;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        td {
+            background-color: #FFF8DC;
+        }
+
+        .highlight {
+            color: #8B4513;
+            font-weight: bold;
+        }
+
+        .image-cell {
+            text-align: center;
+            vertical-align: middle;
+            background-color: #FFF8DC;
+        }
+
+        .image-cell img {
+            max-width: 60%; /* Tamaño de imagen ajustado */
+            height: auto;
+            border-radius: 25px; /* Opcional: Bordes redondeados para las imágenes */
+        }
+
+        .combined-cell {
+            text-align: left; /* Mejor alineación para el texto largo */
+            vertical-align: top;
+            background-color: #FFF8DC;
+            color: #333;
+        }
+
+        /* Media Query para pantallas pequeñas */
+        @media (max-width: 768px) {
+            table {
+                width: 90%;
+            }
+
+            .image-cell img {
+                max-width: 50%;
+            }
+
+            ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            ul li {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Misión y Visión de la Universidad de las Fuerzas Armadas ESPE</h1>
+
+    <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('historia') }}">Historia</a></li>
+        <li><a href="{{ url_for('mision') }}">Misión y Visión</a></li>
+        <li><a href="{{ url_for('contacto') }}">Contactos</a></li>
+    </ul>
+
+    <table>
+        <tr>
+            <th class="highlight">Misión</th>
+            <td class="image-cell" rowspan="2"><img src="../static/images/4.jpg" alt="Misión y Visión"></td>
+        </tr>
+        <tr>
+            <td class="combined-cell">"Formar académicos, profesionales e investigadores de excelencia, creativos, humanistas, con capacidad de liderazgo, pensamiento crítico y alta conciencia ciudadana; generar, aplicar y transferir el conocimiento; y, proporcionar e implementar alternativas de solución a los problemas del país acordes con el Plan Nacional de Desarrollo”.</td>
+        </tr>
+        <tr>
+            <td class="image-cell" rowspan="2"><img src="../static/images/5.jpg" alt="Visión"></td>            
+            <th class="highlight">Visión</th>
+        </tr>
+        <tr>
+            <td class="combined-cell">Ser una universidad líder en la gestión del conocimiento y tecnología en el sistema de educación superior del país, con prestigio internacional y referente de práctica de valores éticos, cívicos y de servicio a la sociedad</td>
+        </tr>
+        <tr>
+            <th class="highlight" colspan="2">Propuesta</th>
+        </tr>
+        <tr>
+            <td class="combined-cell" colspan="2">Convertirse en un referente nacional e internacional en estudios de cuarto nivel por su excelencia académica. Ofertando programas de postgrado innovadores en ciencias y artes de alta calidad, acordes con el desarrollo social y tecnológico de nuestra sociedad.</td>
+        </tr>
+        <tr>
+            <th class="highlight">Objetivos</th>
+            <td class="image-cell" rowspan="2"><img src="../static/images/6.png" alt="Objetivos"></td>
+        </tr>
+        <tr>
+            <td class="combined-cell">Formar profesionales íntegros y humanistas al servicio de la sociedad ecuatoriana, para impulsar el desarrollo técnico, económico y cultural del país mediante la práctica de la ciencia y la investigación.
+            Realizar trabajos de investigación o servicios en las ciencias e ingenierías como principio fundamental de una educación científica.
+            Actualizar y profundizar el conocimiento de las ciencias e ingenierías tanto en su connotación tecnológica como socio-económica.</td>
+        </tr>
+        <tr>
+            <th class="highlight" colspan="2">Valores Institucionales</th>
+        </tr>
+        <tr>
+            <td class="combined-cell" colspan="2">La conducta de todos y cada uno de los miembros de la comunidad universitaria, se mantendrá siempre bajo la práctica de los valores institucionales que se describen a continuación:
+            <ul>
+                <li>Honestidad a toda prueba.</li>
+                <li>Respeto a la libertad de pensamiento.</li>
+                <li>Orden, puntualidad y disciplina conscientes.</li>
+                <li>Búsqueda permanente de la calidad y la excelencia.</li>
+                <li>Igualdad de oportunidades.</li>
+                <li>Respeto a las personas y los derechos humanos.</li>
+                <li>Reconocimiento a la voluntad, creatividad y perseverancia.</li>
+                <li>Práctica de la justicia, solidaridad y lealtad.</li>
+                <li>Práctica de la verdadera amistad y camaradería.</li>
+                <li>Cultivo del civismo y respeto al medio ambiente.</li>
+                <li>Compromiso con la institución y la sociedad.</li>
+                <li>Identidad institucional.</li>
+                <li>Liderazgo y Emprendimiento.</li>
+                <li>Pensamiento crítico.</li>
+                <li>Alta conciencia ciudadana.</li>
+            </ul></td>
+        </tr>
+    </table>
+
+</body>
+</html>
